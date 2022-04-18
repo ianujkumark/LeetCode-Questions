@@ -1,31 +1,18 @@
 class Solution {
 public:
     int calPoints(vector<string>& ops) {
-        vector<int> n;
-        int j=-1;
-        for(int i=0;i<ops.size();i++)
+        vector<int> record;
+        for(string ch : ops)
         {
-            if(ops[i]=="+")
-            {
-                n.push_back(n[j]+n[j-1]);
-                j++;
-            }
-            else if(ops[i]=="D")
-            {
-                n.push_back(n[j]*2);
-                j++;
-            }
-            else if(ops[i]=="C")
-            {
-                n.pop_back();
-                j--;
-            }
+            if(ch=="C")
+                record.pop_back();
+            else if(ch=="D")
+                record.push_back(record.back() * 2);
+            else if(ch=="+")
+                record.push_back(record.back()+record[record.size()-2]);
             else
-            {
-                n.push_back(stoi(ops[i]));
-                j++;
-            }
+                record.push_back(stoi(ch));
         }
-        return accumulate(n.begin(),n.end(),0);
+        return accumulate(record.begin(),record.end(),0);
     }
 };
