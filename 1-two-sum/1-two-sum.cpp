@@ -12,6 +12,8 @@ public:
                     n2=j;
                     break;
                 }
+            if(n.size()>2)
+                break;
         }
         n.push_back(n1);
         n.push_back(n2);
