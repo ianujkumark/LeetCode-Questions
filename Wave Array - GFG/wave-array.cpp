@@ -12,20 +12,32 @@ class Solution{
     //Function to sort the array into a wave-like array.
     void convertToWave(int n, vector<int>& arr){
         
-        // Your code here
-        for(int i=1;i<n;i+=2)
+        for(int i=1;i<n;i=i+2)
         {
-            if(arr[i]>arr[i-1])
+            if((n-1)==i)
             {
-                int t=arr[i];
-                arr[i]=arr[i-1];
-                arr[i-1]=t;
+                if(arr[i]>arr[i-1])
+                {
+                    int t=arr[i];
+                    arr[i]=arr[i-1];
+                    arr[i-1]=t;
+                }
             }
-            if((arr[i]>arr[i+1]) && i<=n-2)
+            else
             {
-                int t=arr[i];
-                arr[i]=arr[i+1];
-                arr[i+1]=t;
+                if(arr[i]>arr[i-1])
+                {
+                    int t=arr[i];
+                    arr[i]=arr[i-1];
+                    arr[i-1]=t;
+                }
+                if(arr[i]>arr[i+1])
+                {
+                    int t=arr[i];
+                    arr[i]=arr[i+1];
+                    arr[i+1]=t;
+                }
+                
             }
         }
         
